@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../api/client'
+import { FieldLabel } from '../components/FieldLabel'
 import { EnrichmentStatusChip } from '../components/EnrichmentStatusChip'
 import { useFilters } from '../context/Filters'
 import { resolveEnrichmentStatus } from '../utils/enrichmentStatus'
@@ -44,7 +45,9 @@ export function MechanicsPage() {
           value={mechanics.query}
           onChange={(e) => setMechanics({ query: e.target.value })}
         />
-        <select value={mechanics.domain} onChange={(e) => setMechanics({ domain: e.target.value })}>
+        <label className="filter-label">
+          <FieldLabel entryId="filter.domain">Domain</FieldLabel>
+          <select value={mechanics.domain} onChange={(e) => setMechanics({ domain: e.target.value })}>
           <option value="">All domains</option>
           <option value="locomotion">locomotion</option>
           <option value="combat">combat</option>
@@ -53,13 +56,19 @@ export function MechanicsPage() {
           <option value="level">level</option>
           <option value="session">session</option>
         </select>
-        <select value={mechanics.flavor} onChange={(e) => setMechanics({ flavor: e.target.value })}>
+        </label>
+        <label className="filter-label">
+          <FieldLabel entryId="filter.flavor">Flavor</FieldLabel>
+          <select value={mechanics.flavor} onChange={(e) => setMechanics({ flavor: e.target.value })}>
           <option value="">All flavors</option>
           <option value="action">action</option>
           <option value="adventure">adventure</option>
           <option value="strategy">strategy</option>
         </select>
-        <select
+        </label>
+        <label className="filter-label">
+          <FieldLabel entryId="filter.enrichment">Enrichment</FieldLabel>
+          <select
           value={mechanics.enrichmentStatus ?? ''}
           onChange={(e) => setMechanics({ enrichmentStatus: e.target.value })}
         >
@@ -67,16 +76,23 @@ export function MechanicsPage() {
           <option value="complete">complete</option>
           <option value="needs_info">needs info</option>
         </select>
+        </label>
       </div>
       <p className="meta">{filtered.length} mechanics</p>
       <table className="table">
         <thead>
           <tr>
             <th>Name</th>
-            <th>Domain</th>
-            <th>Flavor</th>
+            <th>
+              <FieldLabel entryId="field.mechanic.domain">Domain</FieldLabel>
+            </th>
+            <th>
+              <FieldLabel entryId="field.mechanic.flavor">Flavor</FieldLabel>
+            </th>
             <th>Maps</th>
-            <th>Status</th>
+            <th>
+              <FieldLabel entryId="filter.enrichment">Status</FieldLabel>
+            </th>
           </tr>
         </thead>
         <tbody>

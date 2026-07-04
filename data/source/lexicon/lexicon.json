@@ -1,0 +1,770 @@
+{
+  "categories": [
+    {
+      "id": "process",
+      "title": "Design process",
+      "description": "Cross-cutting game design concepts and index workflows."
+    },
+    {
+      "id": "mechanic",
+      "title": "Mechanic catalog",
+      "description": "Fields on reusable mechanic entries in the mechanics library."
+    },
+    {
+      "id": "variable",
+      "title": "Game variables",
+      "description": "Tracked state variables shared across games and maps."
+    },
+    {
+      "id": "menu",
+      "title": "UI menus",
+      "description": "Screen patterns and menu flow in the UI menu catalog."
+    },
+    {
+      "id": "skill",
+      "title": "Design skills",
+      "description": "Player skills trained by mechanics and game loops."
+    },
+    {
+      "id": "map",
+      "title": "Gameplay maps",
+      "description": "Game and genre recipe maps binding mechanics, variables, and menus."
+    },
+    {
+      "id": "binding",
+      "title": "Bindings and relationships",
+      "description": "How entities link together on maps and in catalogs."
+    }
+  ],
+  "entries": {
+    "agent-context": {
+      "category": "process",
+      "title": "Agent context",
+      "short": "Summaries and prompts for AI design assistants.",
+      "long": "Bundles summary_for_agents, gdd_prompt, and implementation_checklist for agent workflows.",
+      "related": [
+        "gdd",
+        "enrichment"
+      ],
+      "seeAlso": [
+        "field.mechanic.agent_context"
+      ]
+    },
+    "co-occurrence": {
+      "category": "process",
+      "title": "Co-occurrence",
+      "short": "How often mechanics appear together.",
+      "long": "Shows mechanic pairs or clusters on shared games; useful for genre fingerprints.",
+      "related": [
+        "field.mechanic.synergies"
+      ]
+    },
+    "core-loop": {
+      "category": "process",
+      "title": "Core loop",
+      "short": "The repeating cycle of actions the player performs moment to moment.",
+      "long": "The core loop is the heartbeat of a game: perceive, decide, act, receive feedback, repeat. Maps store it in narrative.core_loop and gdd_outline.core_loop.",
+      "related": [
+        "gdd",
+        "signature-gameplay"
+      ]
+    },
+    "design-pillars": {
+      "category": "process",
+      "title": "Design pillars",
+      "short": "Non-negotiable creative goals that guide tradeoffs.",
+      "long": "Short intent statements that keep features aligned with the player fantasy. Appears in narrative and design_intent on maps.",
+      "related": [
+        "player-fantasy"
+      ]
+    },
+    "enrichment": {
+      "category": "process",
+      "title": "Enrichment",
+      "short": "Curated design pedagogy beyond bare schema fields.",
+      "long": "Adding design_guidance, agent_context, and map-specific notes so entries are actionable. Export computes enrichment_status per entity type.",
+      "related": [
+        "agent-context",
+        "field.mechanic.design_guidance"
+      ]
+    },
+    "field.design_guidance.designer_notes": {
+      "category": "process",
+      "title": "Designer notes",
+      "short": "Tactical tips for application.",
+      "long": "Freeform expert notes.",
+      "related": [
+        "field.design_guidance.when_to_use"
+      ]
+    },
+    "field.design_guidance.when_to_avoid": {
+      "category": "process",
+      "title": "When to avoid",
+      "short": "Anti-patterns and misfit contexts.",
+      "long": "Bullet list of cases to skip this pattern.",
+      "related": [
+        "field.design_guidance.when_to_use"
+      ]
+    },
+    "field.design_guidance.when_to_use": {
+      "category": "process",
+      "title": "When to use",
+      "short": "Situations where the pattern applies.",
+      "long": "Primary enrichment field across mechanics, variables, menus, and skills.",
+      "related": [
+        "enrichment"
+      ]
+    },
+    "field.design_guidance.where_to_use": {
+      "category": "process",
+      "title": "Where to use",
+      "short": "Placement in genre, loop phase, or UI.",
+      "long": "Spatial and structural guidance.",
+      "related": [
+        "field.design_guidance.when_to_use"
+      ]
+    },
+    "field.map.context": {
+      "category": "map",
+      "title": "Context",
+      "short": "Dimension, perspective, platforms, session type.",
+      "long": "Situates the map for filters and agent briefs.",
+      "schemaRef": "gameplay-map.schema.json#context"
+    },
+    "field.map.design_intent": {
+      "category": "map",
+      "title": "Design intent",
+      "short": "Fantasy, tone, theme tags, pillars.",
+      "long": "Creative direction beyond raw mechanics.",
+      "schemaRef": "gameplay-map.schema.json#design_intent"
+    },
+    "field.map.gdd_outline": {
+      "category": "map",
+      "title": "GDD outline (field)",
+      "short": "Structured GDD sections on the map.",
+      "long": "overview, core_loop, goals, constraints, and system notes.",
+      "related": [
+        "gdd-outline"
+      ],
+      "schemaRef": "gameplay-map.schema.json#gdd_outline"
+    },
+    "field.map.mechanics.domain": {
+      "category": "binding",
+      "title": "Domain (binding)",
+      "short": "Pillar for this binding on the map.",
+      "long": "Same enum as mechanic domain.",
+      "schemaRef": "gameplay-map.schema.json#mechanics.domain",
+      "enumHelp": {
+        "combat": "Conflict resolution and damage.",
+        "economy": "Resources, costs, and rewards.",
+        "level": "Space, pacing, and encounter layout.",
+        "locomotion": "Movement and traversal.",
+        "progression": "Growth, unlocks, and power curves.",
+        "session": "Runs, saves, and meta structure."
+      }
+    },
+    "field.map.mechanics.expression": {
+      "category": "binding",
+      "title": "Expression",
+      "short": "Short formula or pattern for the binding.",
+      "long": "Compact design shorthand on maps.",
+      "schemaRef": "gameplay-map.schema.json#mechanics.expression"
+    },
+    "field.map.mechanics.map_notes": {
+      "category": "binding",
+      "title": "Map notes (mechanic)",
+      "short": "Game-specific notes for this binding.",
+      "long": "How the mechanic expresses on this title.",
+      "schemaRef": "gameplay-map.schema.json#mechanics.map_notes"
+    },
+    "field.map.mechanics.phase": {
+      "category": "binding",
+      "title": "Phase",
+      "short": "When in the loop the mechanic peaks.",
+      "long": "early, mid, late, or optional.",
+      "schemaRef": "gameplay-map.schema.json#mechanics.phase",
+      "enumHelp": {
+        "early": "Tutorial or opening.",
+        "late": "Mastery or climax.",
+        "mid": "Core challenge.",
+        "optional": "Side systems."
+      }
+    },
+    "field.map.mechanics.role": {
+      "category": "binding",
+      "title": "Mechanic role (map)",
+      "short": "signature, supporting, or common.",
+      "long": "How important the binding is on this map.",
+      "related": [
+        "signature-gameplay"
+      ],
+      "schemaRef": "gameplay-map.schema.json#mechanics.role",
+      "enumHelp": {
+        "common": "Genre-standard filler mechanic.",
+        "signature": "Defines identity of the map.",
+        "supporting": "Enables or modifies signatures."
+      }
+    },
+    "field.map.mechanics.weight": {
+      "category": "binding",
+      "title": "Weight",
+      "short": "Relative emphasis from 1 to 5.",
+      "long": "Optional priority for agents composing briefs.",
+      "schemaRef": "gameplay-map.schema.json#mechanics.weight"
+    },
+    "field.map.menu_flow": {
+      "category": "binding",
+      "title": "Menu flow (map)",
+      "short": "Navigation edges between menus.",
+      "long": "How players move between screens on this title.",
+      "schemaRef": "gameplay-map.schema.json#menu_flow"
+    },
+    "field.map.narrative": {
+      "category": "map",
+      "title": "Narrative",
+      "short": "Description, core loop, skills tested, pillars.",
+      "long": "Human-facing story of the game or genre recipe.",
+      "schemaRef": "gameplay-map.schema.json#narrative"
+    },
+    "field.map.skill_slugs": {
+      "category": "map",
+      "title": "Design skills",
+      "short": "Skill catalog links for this map.",
+      "long": "Cross-links to skills trained or emphasized.",
+      "schemaRef": "gameplay-map.schema.json#skill_slugs"
+    },
+    "field.map.systems": {
+      "category": "map",
+      "title": "Systems",
+      "short": "Failure model, economy, pacing, loop phases.",
+      "long": "High-level system characterization for GDD seeds.",
+      "schemaRef": "gameplay-map.schema.json#systems"
+    },
+    "field.map.ui_menus.role": {
+      "category": "binding",
+      "title": "Menu role (map)",
+      "short": "core, optional, or contextual.",
+      "long": "How essential the menu is on this map.",
+      "schemaRef": "gameplay-map.schema.json#ui_menus.role",
+      "enumHelp": {
+        "contextual": "Situational overlay.",
+        "core": "Required for the loop.",
+        "optional": "Quality-of-life."
+      }
+    },
+    "field.map.variable_relationships": {
+      "category": "binding",
+      "title": "Variable relationships",
+      "short": "Edges between variables on the map.",
+      "long": "from_variable, to_variable, relationship, notes.",
+      "schemaRef": "gameplay-map.schema.json#variable_relationships"
+    },
+    "field.map.variables.expression": {
+      "category": "binding",
+      "title": "Expression (variable)",
+      "short": "How the variable shows on this map.",
+      "long": "Tuning note or UI expression.",
+      "schemaRef": "gameplay-map.schema.json#variables.expression"
+    },
+    "field.map.variables.role": {
+      "category": "binding",
+      "title": "Variable role (map)",
+      "short": "primary, supporting, or hidden.",
+      "long": "Visibility and importance on this map.",
+      "schemaRef": "gameplay-map.schema.json#variables.role",
+      "enumHelp": {
+        "hidden": "Backend or debug state.",
+        "primary": "Central to decisions.",
+        "supporting": "Secondary feedback."
+      }
+    },
+    "field.map.variants": {
+      "category": "map",
+      "title": "Variants",
+      "short": "Alternate rule sets or difficulty modes.",
+      "long": "Label, notes, and signature add/drop lists.",
+      "schemaRef": "gameplay-map.schema.json#variants"
+    },
+    "field.map.views": {
+      "category": "map",
+      "title": "Views",
+      "short": "Filtered slices of mechanic bindings.",
+      "long": "Preset filters by role or flavor for exploration.",
+      "schemaRef": "gameplay-map.schema.json#views"
+    },
+    "field.mechanic.agent_context": {
+      "category": "mechanic",
+      "title": "Agent context (mechanic)",
+      "short": "AI-facing summary and prompts for this mechanic.",
+      "long": "summary_for_agents is required for enrichment complete. Optional gdd_prompt and implementation_checklist.",
+      "seeAlso": [
+        "agent-context"
+      ]
+    },
+    "field.mechanic.complexity": {
+      "category": "mechanic",
+      "title": "Complexity",
+      "short": "Implementation and cognitive load: S, M, or L.",
+      "long": "Rough sizing for scoping prototypes.",
+      "schemaRef": "mechanic-entry.schema.json#complexity",
+      "enumHelp": {
+        "L": "Large scope.",
+        "M": "Medium scope.",
+        "S": "Small scope."
+      }
+    },
+    "field.mechanic.design_exercises": {
+      "category": "mechanic",
+      "title": "Design exercises",
+      "short": "Practice prompts with constraints and success criteria.",
+      "long": "Structured exercises for workshops or agent tasks.",
+      "schemaRef": "mechanic-entry.schema.json#design_exercises"
+    },
+    "field.mechanic.design_guidance": {
+      "category": "mechanic",
+      "title": "Design guidance",
+      "short": "When, where, and how to apply the mechanic.",
+      "long": "Includes when_to_use, where_to_use, when_to_avoid, and designer_notes. Required for enrichment complete status together with agent_context.",
+      "related": [
+        "enrichment"
+      ]
+    },
+    "field.mechanic.domain": {
+      "category": "mechanic",
+      "title": "Domain",
+      "short": "Which gameplay pillar the mechanic primarily affects.",
+      "long": "Used on mechanic entries and map bindings to align systems.",
+      "schemaRef": "mechanic-entry.schema.json#domain",
+      "enumHelp": {
+        "combat": "Conflict resolution and damage.",
+        "economy": "Resources, costs, and rewards.",
+        "level": "Space, pacing, and encounter layout.",
+        "locomotion": "Movement and traversal.",
+        "progression": "Growth, unlocks, and power curves.",
+        "session": "Runs, saves, and meta structure."
+      }
+    },
+    "field.mechanic.examples": {
+      "category": "mechanic",
+      "title": "Examples",
+      "short": "Concrete instantiations linked to maps.",
+      "long": "Each example has label, description, and optional map_slug.",
+      "schemaRef": "mechanic-entry.schema.json#examples"
+    },
+    "field.mechanic.flavor": {
+      "category": "mechanic",
+      "title": "Flavor",
+      "short": "High-level genre family: action, adventure, or strategy.",
+      "long": "Taxonomy axis orthogonal to domain. Helps filter and compose genre recipes.",
+      "schemaRef": "mechanic-entry.schema.json#flavor",
+      "enumHelp": {
+        "action": "Real-time skill and reflex challenges.",
+        "adventure": "Exploration, narrative, and discovery.",
+        "strategy": "Planning, resource tradeoffs, and long horizons."
+      }
+    },
+    "field.mechanic.learning_objectives": {
+      "category": "mechanic",
+      "title": "Learning objectives",
+      "short": "Designer outcomes when applying the mechanic.",
+      "long": "Schema 1.3 pedagogy field for teaching and briefs.",
+      "schemaRef": "mechanic-entry.schema.json#learning_objectives"
+    },
+    "field.mechanic.parameter_knobs": {
+      "category": "mechanic",
+      "title": "Parameter knobs",
+      "short": "Tunable values that change mechanic feel.",
+      "long": "Name, range, and effect triples for balancing.",
+      "schemaRef": "mechanic-entry.schema.json#parameter_knobs"
+    },
+    "field.mechanic.player_experience": {
+      "category": "mechanic",
+      "title": "Player experience",
+      "short": "How the mechanic feels moment to moment.",
+      "long": "Emotional and readability notes for designers.",
+      "schemaRef": "mechanic-entry.schema.json#player_experience"
+    },
+    "field.mechanic.skills_developed": {
+      "category": "mechanic",
+      "title": "Skills developed",
+      "short": "Design skill slugs trained by this mechanic.",
+      "long": "Links mechanics catalog to skills catalog.",
+      "schemaRef": "mechanic-entry.schema.json#skills_developed"
+    },
+    "field.mechanic.summary": {
+      "category": "mechanic",
+      "title": "Summary",
+      "short": "One-paragraph description of the mechanic.",
+      "long": "The primary human-readable definition. Should stand alone without reading the full entry.",
+      "schemaRef": "mechanic-entry.schema.json#summary"
+    },
+    "field.mechanic.synergies": {
+      "category": "mechanic",
+      "title": "Synergies",
+      "short": "Mechanic slugs that combine well.",
+      "long": "Cross-links for composition and co-occurrence exploration.",
+      "schemaRef": "mechanic-entry.schema.json#synergies"
+    },
+    "field.mechanic.synergy_notes": {
+      "category": "mechanic",
+      "title": "Synergy notes",
+      "short": "Per-synergy explanation of why combinations work.",
+      "long": "Pairs slug with a short note for designers.",
+      "schemaRef": "mechanic-entry.schema.json#synergy_notes"
+    },
+    "field.mechanic.tags": {
+      "category": "mechanic",
+      "title": "Tags",
+      "short": "Controlled vocabulary labels for search and requirements.",
+      "long": "Tags must match mechanic-tags.json. Used in requirements and filters.",
+      "schemaRef": "mechanic-entry.schema.json#tags"
+    },
+    "field.menu.input_context": {
+      "category": "menu",
+      "title": "Input context",
+      "short": "Primary input scheme the menu targets.",
+      "long": "gamepad, keyboard_mouse, touch, or any.",
+      "schemaRef": "ui-menu.schema.json#input_context"
+    },
+    "field.menu.layer": {
+      "category": "menu",
+      "title": "Layer",
+      "short": "When the menu appears in the session.",
+      "long": "meta (between runs), in_game (during play), or combat_overlay.",
+      "schemaRef": "ui-menu.schema.json#layer",
+      "enumHelp": {
+        "combat_overlay": "HUD-adjacent overlays.",
+        "in_game": "Pause, inventory during play.",
+        "meta": "Title, lobby, hub between runs."
+      }
+    },
+    "field.menu.menu_type": {
+      "category": "menu",
+      "title": "Menu type",
+      "short": "Functional screen category.",
+      "long": "Values include main, pause, inventory, shop, hub, boons, and others. Groups navigation, commerce, and overlay patterns.",
+      "schemaRef": "ui-menu.schema.json#menu_type"
+    },
+    "field.menu.shared_rationale": {
+      "category": "menu",
+      "title": "Shared rationale (menu)",
+      "short": "Why this menu pattern exists.",
+      "long": "Required for menu enrichment complete.",
+      "schemaRef": "ui-menu.schema.json#shared_rationale"
+    },
+    "field.menu.typical_actions": {
+      "category": "menu",
+      "title": "Typical actions",
+      "short": "Common player actions on this screen.",
+      "long": "Bullet list of verbs the menu supports.",
+      "schemaRef": "ui-menu.schema.json#typical_actions"
+    },
+    "field.skill.category": {
+      "category": "skill",
+      "title": "Skill category",
+      "short": "motor, cognitive, strategic, social, or creative.",
+      "long": "Taxonomy for design skills the game trains.",
+      "schemaRef": "skill.schema.json#category",
+      "enumHelp": {
+        "cognitive": "Memory, pattern recognition.",
+        "creative": "Expression and experimentation.",
+        "motor": "Timing and dexterity.",
+        "social": "Cooperation and deception.",
+        "strategic": "Planning and evaluation."
+      }
+    },
+    "field.skill.design_guidance": {
+      "category": "skill",
+      "title": "Design guidance (skill)",
+      "short": "When to emphasize this skill in a design.",
+      "long": "when_to_use maps to When to emphasize on the site.",
+      "schemaRef": "skill.schema.json#design_guidance"
+    },
+    "field.skill.learning_outcome": {
+      "category": "skill",
+      "title": "Learning outcome",
+      "short": "What the player learns by practicing.",
+      "long": "Required for skill enrichment complete with related_mechanics.",
+      "schemaRef": "skill.schema.json#learning_outcome"
+    },
+    "field.skill.practice_activities": {
+      "category": "skill",
+      "title": "Practice activities",
+      "short": "In-game activities that train the skill.",
+      "long": "Concrete loops or challenges tied to mechanics.",
+      "schemaRef": "skill.schema.json#practice_activities"
+    },
+    "field.variable.agent_context": {
+      "category": "variable",
+      "title": "Agent context (variable)",
+      "short": "AI summary for variable usage.",
+      "long": "Optional gdd_prompt and checklist for implementation.",
+      "schemaRef": "game-variable.schema.json#agent_context"
+    },
+    "field.variable.category": {
+      "category": "variable",
+      "title": "Variable category",
+      "short": "Kind of tracked state.",
+      "long": "stat, resource, currency, slot, meter, counter, or flag.",
+      "schemaRef": "game-variable.schema.json#category",
+      "enumHelp": {
+        "counter": "Integer tally.",
+        "currency": "Trade and shop value.",
+        "flag": "Boolean or enum state.",
+        "meter": "Continuous gauge.",
+        "resource": "Consumable or regenerating pool.",
+        "slot": "Discrete equipment or ability slot.",
+        "stat": "Character attribute."
+      }
+    },
+    "field.variable.design_guidance": {
+      "category": "variable",
+      "title": "Design guidance (variable)",
+      "short": "When to use or avoid this variable type.",
+      "long": "Same shape as mechanic design_guidance.",
+      "schemaRef": "game-variable.schema.json#design_guidance"
+    },
+    "field.variable.player_focus": {
+      "category": "variable",
+      "title": "Player focus",
+      "short": "What the player watches or optimizes.",
+      "long": "Ties the variable to readable UI and decisions.",
+      "schemaRef": "game-variable.schema.json#player_focus"
+    },
+    "field.variable.reset_behavior": {
+      "category": "variable",
+      "title": "Reset behavior",
+      "short": "When the variable resets.",
+      "long": "per_death, per_level, per_session, or persistent.",
+      "schemaRef": "game-variable.schema.json#reset_behavior"
+    },
+    "field.variable.scope": {
+      "category": "variable",
+      "title": "Scope",
+      "short": "Who or what owns the variable.",
+      "long": "player, party, world, session, or run.",
+      "schemaRef": "game-variable.schema.json#scope",
+      "enumHelp": {
+        "party": "Shared squad state.",
+        "player": "Per avatar.",
+        "run": "Roguelike run scope.",
+        "session": "Current play session.",
+        "world": "Persistent world."
+      }
+    },
+    "field.variable.shared_rationale": {
+      "category": "variable",
+      "title": "Shared rationale",
+      "short": "Why this variable exists across games.",
+      "long": "Cross-game design intent. Required with player_focus for variable enrichment complete.",
+      "schemaRef": "game-variable.schema.json#shared_rationale"
+    },
+    "field.variable.typical_range": {
+      "category": "variable",
+      "title": "Typical range",
+      "short": "Expected numeric or qualitative bounds.",
+      "long": "Helps agents tune defaults without guessing.",
+      "schemaRef": "game-variable.schema.json#typical_range"
+    },
+    "field.variable.value_kind": {
+      "category": "variable",
+      "title": "Value kind",
+      "short": "Data shape of the variable.",
+      "long": "integer, float, boolean, enum, slot_list, or grid.",
+      "schemaRef": "game-variable.schema.json#value_kind"
+    },
+    "filter.domain": {
+      "category": "mechanic",
+      "title": "Domain filter",
+      "short": "Filter mechanics by pillar.",
+      "long": "locomotion, combat, progression, economy, level, session.",
+      "related": [
+        "field.mechanic.domain"
+      ]
+    },
+    "filter.enrichment": {
+      "category": "process",
+      "title": "Enrichment filter",
+      "short": "Filter by complete vs needs_info.",
+      "long": "Shows entries missing required pedagogy fields.",
+      "related": [
+        "enrichment"
+      ]
+    },
+    "filter.flavor": {
+      "category": "mechanic",
+      "title": "Flavor filter",
+      "short": "Filter mechanics by genre family.",
+      "long": "action, adventure, or strategy.",
+      "related": [
+        "field.mechanic.flavor"
+      ]
+    },
+    "gdd": {
+      "category": "process",
+      "title": "Game Design Document (GDD)",
+      "short": "A living design spec describing goals, loops, systems, and constraints.",
+      "long": "A Game Design Document captures what the game is, who it is for, and how systems interact. In this index, map gdd_outline fields seed a GDD from signature mechanics, constraints, and progression notes.",
+      "related": [
+        "core-loop",
+        "gdd-outline",
+        "design-pillars"
+      ]
+    },
+    "gdd-outline": {
+      "category": "process",
+      "title": "GDD outline",
+      "short": "Structured GDD seed on gameplay maps.",
+      "long": "The gdd_outline block exports designer-facing sections: overview, core_loop, player_goals, constraints, and optional combat, economy, and progression notes.",
+      "related": [
+        "gdd",
+        "field.map.gdd_outline"
+      ]
+    },
+    "player-fantasy": {
+      "category": "process",
+      "title": "Player fantasy",
+      "short": "The identity or power fantasy the game sells.",
+      "long": "Answers who am I in this game. Stored in design_intent.player_fantasy and should align with signature mechanics.",
+      "related": [
+        "design-pillars",
+        "signature-gameplay"
+      ]
+    },
+    "quality-tier": {
+      "category": "process",
+      "title": "Quality tier",
+      "short": "Map curation level on gameplay maps.",
+      "long": "Signals how game-specific and hand-enriched a map is.",
+      "schemaRef": "gameplay-map.schema.json#metadata.quality_tier",
+      "enumHelp": {
+        "catalog": "Baseline catalog entry.",
+        "curated": "Hand-enriched with game-specific notes.",
+        "stub": "Placeholder with minimal data.",
+        "template": "Genre-derived starter."
+      }
+    },
+    "section.analytics.enrichment": {
+      "category": "process",
+      "title": "Enrichment coverage",
+      "short": "Percent of catalog with pedagogy complete.",
+      "long": "Analytics metrics for mechanics, skills, variables, and menus.",
+      "related": [
+        "enrichment"
+      ]
+    },
+    "section.map.context": {
+      "category": "map",
+      "title": "Context section",
+      "short": "Platform, dimension, perspective metadata.",
+      "long": "Situates the title for agents and filters."
+    },
+    "section.map.description": {
+      "category": "map",
+      "title": "Description section",
+      "short": "Overview and core loop narrative.",
+      "long": "Primary human-readable summary of the game or genre recipe."
+    },
+    "section.map.gdd-outline": {
+      "category": "map",
+      "title": "GDD outline section",
+      "short": "Structured GDD seed.",
+      "long": "Exportable sections for briefs and agents.",
+      "related": [
+        "gdd-outline"
+      ]
+    },
+    "section.map.mechanics": {
+      "category": "map",
+      "title": "Mechanic bindings section",
+      "short": "Full binding table.",
+      "long": "Role, phase, domain, and notes per mechanic.",
+      "related": [
+        "field.map.mechanics.role"
+      ]
+    },
+    "section.map.signatures": {
+      "category": "map",
+      "title": "Signature mechanics section",
+      "short": "Headline mechanic links.",
+      "long": "Quick navigation to defining mechanics.",
+      "related": [
+        "signature-gameplay"
+      ]
+    },
+    "section.map.systems": {
+      "category": "map",
+      "title": "Systems section",
+      "short": "Failure, economy, pacing.",
+      "long": "High-level system characterization.",
+      "related": [
+        "field.map.systems"
+      ]
+    },
+    "section.map.ui-menus": {
+      "category": "map",
+      "title": "UI menu bindings section",
+      "short": "Menus used on this map.",
+      "long": "Role and notes per menu binding."
+    },
+    "section.map.variables": {
+      "category": "map",
+      "title": "Variable bindings section",
+      "short": "Variables used on this map.",
+      "long": "Role and expression per variable binding."
+    },
+    "section.map.variants": {
+      "category": "map",
+      "title": "Variants section",
+      "short": "Alternate modes.",
+      "long": "Optional rule variants for the same map."
+    },
+    "section.mechanic.agent-context": {
+      "category": "mechanic",
+      "title": "Agent context section",
+      "short": "AI prompts and checklist.",
+      "long": "Agent-facing enrichment.",
+      "related": [
+        "agent-context"
+      ]
+    },
+    "section.mechanic.design-guidance": {
+      "category": "mechanic",
+      "title": "Design guidance section",
+      "short": "When and how to apply.",
+      "long": "Pedagogy for designers and agents.",
+      "related": [
+        "field.mechanic.design_guidance"
+      ]
+    },
+    "section.mechanic.summary": {
+      "category": "mechanic",
+      "title": "Summary section",
+      "short": "Mechanic definition.",
+      "long": "Core description of the reusable mechanic."
+    },
+    "section.skill.learning-outcome": {
+      "category": "skill",
+      "title": "Learning outcome section",
+      "short": "Skill training goal.",
+      "long": "What players learn through related mechanics."
+    },
+    "section.variable.shared-rationale": {
+      "category": "variable",
+      "title": "Shared rationale section",
+      "short": "Cross-game why.",
+      "long": "Required enrichment field for variables."
+    },
+    "signature-gameplay": {
+      "category": "process",
+      "title": "Signature gameplay",
+      "short": "Mechanics that define game or genre identity.",
+      "long": "Ordered mechanic slugs that are headline interactions; bindings use role signature.",
+      "related": [
+        "field.map.mechanics.role",
+        "core-loop"
+      ]
+    }
+  },
+  "schema_version": "1.0"
+}

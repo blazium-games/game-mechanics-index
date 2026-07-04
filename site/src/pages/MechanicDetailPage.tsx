@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../api/client'
 import { ExportDropdown } from '../components/ExportDropdown'
+import { MetaField } from '../components/FieldLabel'
 import { SuggestEditLink } from '../components/Layout'
 import { AgentContextSection } from '../components/AgentContextSection'
 import { SectionHeading } from '../components/SectionHeading'
@@ -86,27 +87,28 @@ export function MechanicDetailPage() {
         </div>
       </div>
       <p className="meta">
-        {mech.domain} · flavor: {mech.flavor}
+        <MetaField entryId="field.mechanic.domain" label="domain" value={mech.domain} />
+        <MetaField entryId="field.mechanic.flavor" label="flavor" value={mech.flavor} />
       </p>
       <section id="summary">
-        <SectionHeading sectionId="summary">Summary</SectionHeading>
+        <SectionHeading sectionId="summary" helpKey="section.mechanic.summary">Summary</SectionHeading>
         <p>{mech.summary}</p>
       </section>
       {mech.player_experience && (
         <section id="player-experience">
-          <SectionHeading sectionId="player-experience">Player experience</SectionHeading>
+          <SectionHeading sectionId="player-experience" helpKey="field.mechanic.player_experience">Player experience</SectionHeading>
           <p>{mech.player_experience}</p>
         </section>
       )}
       {mech.flavor_rationale && (
         <section id="flavor-rationale">
-          <SectionHeading sectionId="flavor-rationale">Flavor rationale</SectionHeading>
+          <SectionHeading sectionId="flavor-rationale" helpKey="field.mechanic.flavor">Flavor rationale</SectionHeading>
           <p>{mech.flavor_rationale}</p>
         </section>
       )}
       {mech.tags && mech.tags.length > 0 && (
         <section id="tags">
-          <SectionHeading sectionId="tags">Tags</SectionHeading>
+          <SectionHeading sectionId="tags" helpKey="field.mechanic.tags">Tags</SectionHeading>
           <div className="chips">
             {mech.tags.map((t) => (
               <span key={t} className="chip">
@@ -152,7 +154,7 @@ export function MechanicDetailPage() {
       )}
       {mech.synergies && mech.synergies.length > 0 && (
         <section id="synergies">
-          <SectionHeading sectionId="synergies">Synergies</SectionHeading>
+          <SectionHeading sectionId="synergies" helpKey="field.mechanic.synergies">Synergies</SectionHeading>
           <div className="chips">
             {mech.synergies.map((s) => (
               <Link key={s} className="chip" to={`/mechanics/${s}`}>
@@ -164,7 +166,7 @@ export function MechanicDetailPage() {
       )}
       {mech.synergy_notes && mech.synergy_notes.length > 0 && (
         <section id="synergy-notes">
-          <SectionHeading sectionId="synergy-notes">Synergy notes</SectionHeading>
+          <SectionHeading sectionId="synergy-notes" helpKey="field.mechanic.synergy_notes">Synergy notes</SectionHeading>
           <ul>
             {mech.synergy_notes.map((note) => (
               <li key={note.slug}>
@@ -177,7 +179,7 @@ export function MechanicDetailPage() {
       )}
       {mech.examples && mech.examples.length > 0 && (
         <section id="examples">
-          <SectionHeading sectionId="examples">Examples</SectionHeading>
+          <SectionHeading sectionId="examples" helpKey="field.mechanic.examples">Examples</SectionHeading>
           {mech.examples.map((ex) => (
             <div key={`${ex.label ?? ex.map_slug ?? ex.description}`} className="exercise-card">
               {ex.label && <strong>{ex.label}</strong>}
@@ -193,25 +195,25 @@ export function MechanicDetailPage() {
       )}
       {mech.design_guidance?.when_to_use && (
         <section id="design-guidance">
-          <SectionHeading sectionId="design-guidance">When to use</SectionHeading>
+          <SectionHeading sectionId="design-guidance" helpKey="section.mechanic.design-guidance">When to use</SectionHeading>
           <p>{mech.design_guidance.when_to_use}</p>
         </section>
       )}
       {mech.design_guidance?.where_to_use && (
         <section id="where-to-use">
-          <SectionHeading sectionId="where-to-use">Where to use</SectionHeading>
+          <SectionHeading sectionId="where-to-use" helpKey="field.design_guidance.where_to_use">Where to use</SectionHeading>
           <p>{mech.design_guidance.where_to_use}</p>
         </section>
       )}
       {mech.design_guidance?.designer_notes && (
         <section id="designer-notes">
-          <SectionHeading sectionId="designer-notes">Designer notes</SectionHeading>
+          <SectionHeading sectionId="designer-notes" helpKey="field.design_guidance.designer_notes">Designer notes</SectionHeading>
           <p>{mech.design_guidance.designer_notes}</p>
         </section>
       )}
       {mech.design_guidance?.when_to_avoid && mech.design_guidance.when_to_avoid.length > 0 && (
         <section id="when-to-avoid">
-          <SectionHeading sectionId="when-to-avoid">When to avoid</SectionHeading>
+          <SectionHeading sectionId="when-to-avoid" helpKey="field.design_guidance.when_to_avoid">When to avoid</SectionHeading>
           <ul>
             {mech.design_guidance.when_to_avoid.map((item) => (
               <li key={item}>{item}</li>
@@ -221,7 +223,7 @@ export function MechanicDetailPage() {
       )}
       {mech.learning_objectives && mech.learning_objectives.length > 0 && (
         <section id="learning-objectives">
-          <SectionHeading sectionId="learning-objectives">Learning objectives</SectionHeading>
+          <SectionHeading sectionId="learning-objectives" helpKey="field.mechanic.learning_objectives">Learning objectives</SectionHeading>
           <ul>
             {mech.learning_objectives.map((item) => (
               <li key={item}>{item}</li>
@@ -231,7 +233,7 @@ export function MechanicDetailPage() {
       )}
       {mech.design_exercises && mech.design_exercises.length > 0 && (
         <section id="design-exercises">
-          <SectionHeading sectionId="design-exercises">Design exercises</SectionHeading>
+          <SectionHeading sectionId="design-exercises" helpKey="field.mechanic.design_exercises">Design exercises</SectionHeading>
           {mech.design_exercises.map((ex) => (
             <div key={ex.prompt} className="exercise-card">
               <p>{ex.prompt}</p>
@@ -247,7 +249,7 @@ export function MechanicDetailPage() {
       )}
       {mech.skills_developed && mech.skills_developed.length > 0 && (
         <section id="skills-developed">
-          <SectionHeading sectionId="skills-developed">Skills developed</SectionHeading>
+          <SectionHeading sectionId="skills-developed" helpKey="field.mechanic.skills_developed">Skills developed</SectionHeading>
           <div className="chips">
             {mech.skills_developed.map((s) => (
               <Link key={s} className="chip" to={`/skills/${s}`}>

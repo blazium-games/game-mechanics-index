@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 import { api } from '../api/client'
+import { HelpTooltip } from '../components/HelpTooltip'
 import { BarBreakdown } from '../components/analytics/BarBreakdown'
 import { HeatmapGrid } from '../components/analytics/HeatmapGrid'
 import { HubDiagram } from '../components/analytics/HubDiagram'
@@ -169,7 +170,12 @@ export function AnalyticsPage() {
         </SectionCard>
 
         <SectionCard
-          title="Mechanics and skills enrichment"
+          title={
+            <>
+              Mechanics and skills enrichment
+              <HelpTooltip entryId="section.analytics.enrichment" />
+            </>
+          }
           description="Design pedagogy coverage — mechanics need design_guidance and agent_context; skills need learning outcomes and related mechanics."
         >
           <div className="analytics-split">

@@ -6,7 +6,7 @@ export function SectionCard({
   children,
   footer,
 }: {
-  title: string
+  title: ReactNode
   description?: string
   children: ReactNode
   footer?: ReactNode

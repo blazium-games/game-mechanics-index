@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../api/client'
+import { FieldLabel } from '../components/FieldLabel'
 import { EnrichmentStatusChip } from '../components/EnrichmentStatusChip'
 import { pageTitle } from '../seo/meta'
 import { DocumentMeta } from '../seo/usePageMeta'
@@ -36,12 +37,15 @@ export function UIMenusPage() {
       </p>
       <div className="filters">
         <input placeholder="Search menus…" value={query} onChange={(e) => setQuery(e.target.value)} />
-        <select value={layer} onChange={(e) => setLayer(e.target.value)}>
+        <label className="filter-label">
+          <FieldLabel entryId="field.menu.layer">Layer</FieldLabel>
+          <select value={layer} onChange={(e) => setLayer(e.target.value)}>
           <option value="">All layers</option>
           <option value="meta">meta</option>
           <option value="in_game">in_game</option>
           <option value="combat_overlay">combat_overlay</option>
         </select>
+        </label>
       </div>
       <p className="meta">{filtered.length} menus</p>
       <div className="card-grid">

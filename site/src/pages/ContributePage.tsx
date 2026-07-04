@@ -119,7 +119,8 @@ export function ContributePage() {
         </a>
       </div>
       <p>
-        See also <Link to="/docs/api">API docs</Link> and <Link to="/docs/webmcp">WebMCP tools</Link>.
+        See also <Link to="/docs/lexicon">Lexicon</Link>, <Link to="/docs/api">API docs</Link>, and{' '}
+        <Link to="/docs/webmcp">WebMCP tools</Link>.
       </p>
     </div>
   )

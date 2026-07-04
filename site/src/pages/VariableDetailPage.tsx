@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../api/client'
 import { EmptyField } from '../components/EmptyField'
+import { MetaField } from '../components/FieldLabel'
 import { ExportDropdown } from '../components/ExportDropdown'
 import { SuggestEditLink } from '../components/Layout'
 import { AgentContextSection } from '../components/AgentContextSection'
@@ -77,23 +78,27 @@ export function VariableDetailPage() {
         </div>
       </div>
       <p className="meta">
-        {v.category} · {v.scope} · {v.value_kind}
-        {v.reset_behavior ? ` · resets ${v.reset_behavior}` : ''}
+        <MetaField entryId="field.variable.category" label="category" value={v.category} />
+        <MetaField entryId="field.variable.scope" label="scope" value={v.scope} />
+        <MetaField entryId="field.variable.value_kind" label="value_kind" value={v.value_kind} />
+        {v.reset_behavior && (
+          <MetaField entryId="field.variable.reset_behavior" label="resets" value={v.reset_behavior} />
+        )}
       </p>
       <section id="summary">
-        <SectionHeading sectionId="summary">Summary</SectionHeading>
+        <SectionHeading sectionId="summary" helpKey="field.mechanic.summary">Summary</SectionHeading>
         <p>{v.summary}</p>
       </section>
       <section id="shared-rationale">
-        <SectionHeading sectionId="shared-rationale">Shared rationale</SectionHeading>
+        <SectionHeading sectionId="shared-rationale" helpKey="section.variable.shared-rationale">Shared rationale</SectionHeading>
         {v.shared_rationale ? <p>{v.shared_rationale}</p> : <EmptyField slug={slug} field="shared_rationale" kind="variable" />}
       </section>
       <section id="player-focus">
-        <SectionHeading sectionId="player-focus">Player focus</SectionHeading>
+        <SectionHeading sectionId="player-focus" helpKey="field.variable.player_focus">Player focus</SectionHeading>
         {v.player_focus ? <p>{v.player_focus}</p> : <EmptyField slug={slug} field="player_focus" kind="variable" />}
       </section>
       <section id="typical-range">
-        <SectionHeading sectionId="typical-range">Typical range</SectionHeading>
+        <SectionHeading sectionId="typical-range" helpKey="field.variable.typical_range">Typical range</SectionHeading>
         {v.typical_range ? <p>{v.typical_range}</p> : <EmptyField slug={slug} field="typical_range" kind="variable" />}
       </section>
       {v.tags && v.tags.length > 0 && (
@@ -110,7 +115,7 @@ export function VariableDetailPage() {
       )}
       {v.design_guidance?.when_to_use && (
         <section id="design-guidance">
-          <SectionHeading sectionId="design-guidance">When to use</SectionHeading>
+          <SectionHeading sectionId="design-guidance" helpKey="field.variable.design_guidance">When to use</SectionHeading>
           <p>{v.design_guidance.when_to_use}</p>
           {v.design_guidance.where_to_use && <p>{v.design_guidance.where_to_use}</p>}
           {v.design_guidance.designer_notes && <p>{v.design_guidance.designer_notes}</p>}
@@ -118,7 +123,7 @@ export function VariableDetailPage() {
       )}
       {v.design_guidance?.when_to_avoid && v.design_guidance.when_to_avoid.length > 0 && (
         <section id="when-to-avoid">
-          <SectionHeading sectionId="when-to-avoid">When to avoid</SectionHeading>
+          <SectionHeading sectionId="when-to-avoid" helpKey="field.design_guidance.when_to_avoid">When to avoid</SectionHeading>
           <ul>
             {v.design_guidance.when_to_avoid.map((item) => (
               <li key={item}>{item}</li>

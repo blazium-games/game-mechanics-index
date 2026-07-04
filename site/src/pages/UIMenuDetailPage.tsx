@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../api/client'
 import { EmptyField } from '../components/EmptyField'
+import { MetaField } from '../components/FieldLabel'
 import { ExportDropdown } from '../components/ExportDropdown'
 import { SuggestEditLink } from '../components/Layout'
 import { AgentContextSection } from '../components/AgentContextSection'
@@ -62,15 +63,18 @@ export function UIMenuDetailPage() {
         </div>
       </div>
       <p className="meta">
-        {menu.menu_type} · {menu.layer}
-        {menu.input_context ? ` · ${menu.input_context}` : ''}
+        <MetaField entryId="field.menu.menu_type" label="menu_type" value={menu.menu_type} />
+        <MetaField entryId="field.menu.layer" label="layer" value={menu.layer} />
+        {menu.input_context && (
+          <MetaField entryId="field.menu.input_context" label="input" value={menu.input_context} />
+        )}
       </p>
       <section id="summary">
-        <SectionHeading sectionId="summary">Summary</SectionHeading>
+        <SectionHeading sectionId="summary" helpKey="field.menu.shared_rationale">Summary</SectionHeading>
         <p>{menu.summary}</p>
       </section>
       <section id="shared-rationale">
-        <SectionHeading sectionId="shared-rationale">Shared rationale</SectionHeading>
+        <SectionHeading sectionId="shared-rationale" helpKey="field.menu.shared_rationale">Shared rationale</SectionHeading>
         {menu.shared_rationale ? (
           <p>{menu.shared_rationale}</p>
         ) : (
@@ -79,7 +83,7 @@ export function UIMenuDetailPage() {
       </section>
       {menu.typical_actions && menu.typical_actions.length > 0 && (
         <section id="typical-actions">
-          <SectionHeading sectionId="typical-actions">Typical actions</SectionHeading>
+          <SectionHeading sectionId="typical-actions" helpKey="field.menu.typical_actions">Typical actions</SectionHeading>
           <div className="chips">
             {menu.typical_actions.map((a) => (
               <span key={a} className="chip">
@@ -91,7 +95,7 @@ export function UIMenuDetailPage() {
       )}
       {menu.design_guidance?.when_to_use && (
         <section id="design-guidance">
-          <SectionHeading sectionId="design-guidance">When to use</SectionHeading>
+          <SectionHeading sectionId="design-guidance" helpKey="field.menu.shared_rationale">When to use</SectionHeading>
           <p>{menu.design_guidance.when_to_use}</p>
           {menu.design_guidance.where_to_use && <p>{menu.design_guidance.where_to_use}</p>}
           {menu.design_guidance.designer_notes && <p>{menu.design_guidance.designer_notes}</p>}
@@ -99,7 +103,7 @@ export function UIMenuDetailPage() {
       )}
       {menu.design_guidance?.when_to_avoid && menu.design_guidance.when_to_avoid.length > 0 && (
         <section id="when-to-avoid">
-          <SectionHeading sectionId="when-to-avoid">When to avoid</SectionHeading>
+          <SectionHeading sectionId="when-to-avoid" helpKey="field.design_guidance.when_to_avoid">When to avoid</SectionHeading>
           <ul>
             {menu.design_guidance.when_to_avoid.map((item) => (
               <li key={item}>{item}</li>
@@ -146,7 +150,7 @@ export function UIMenuDetailPage() {
       )}
       {(outEdges.length > 0 || inEdges.length > 0) && (
         <section id="menu-flow">
-          <SectionHeading sectionId="menu-flow">Menu flow</SectionHeading>
+          <SectionHeading sectionId="menu-flow" helpKey="field.menu.menu_flow">Menu flow</SectionHeading>
           <ul>
             {outEdges.map((e) => (
               <li key={`${e.from_menu}-${e.to_menu}`}>

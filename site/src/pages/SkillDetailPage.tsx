@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Link, useParams } from 'react-router-dom'
 import { api } from '../api/client'
+import { MetaField } from '../components/FieldLabel'
 import { SectionHeading } from '../components/SectionHeading'
 import { useHashScroll } from '../hooks/useHashScroll'
 import { buildCanonical, pageTitle } from '../seo/meta'
@@ -37,18 +38,20 @@ export function SkillDetailPage() {
         ]}
       />
       <h1>{skill.name}</h1>
-      <p className="meta">{skill.category}</p>
+      <p className="meta">
+        <MetaField entryId="field.skill.category" label="category" value={skill.category} />
+      </p>
       <section id="summary">
-        <SectionHeading sectionId="summary">Summary</SectionHeading>
+        <SectionHeading sectionId="summary" helpKey="field.skill.learning_outcome">Summary</SectionHeading>
         <p>{skill.summary}</p>
       </section>
       <section id="learning-outcome">
-        <SectionHeading sectionId="learning-outcome">Learning outcome</SectionHeading>
+        <SectionHeading sectionId="learning-outcome" helpKey="section.skill.learning-outcome">Learning outcome</SectionHeading>
         <p>{skill.learning_outcome}</p>
       </section>
       {skill.practice_activities && skill.practice_activities.length > 0 && (
         <section id="practice-activities">
-          <SectionHeading sectionId="practice-activities">Practice activities</SectionHeading>
+          <SectionHeading sectionId="practice-activities" helpKey="field.skill.practice_activities">Practice activities</SectionHeading>
           <ul>
             {skill.practice_activities.map((a) => (
               <li key={a}>{a}</li>
@@ -58,7 +61,7 @@ export function SkillDetailPage() {
       )}
       {skill.design_guidance?.when_to_use && (
         <section id="design-guidance">
-          <SectionHeading sectionId="design-guidance">When to emphasize</SectionHeading>
+          <SectionHeading sectionId="design-guidance" helpKey="field.skill.design_guidance">When to emphasize</SectionHeading>
           <p>{skill.design_guidance.when_to_use}</p>
           {skill.design_guidance.where_to_use && <p>{skill.design_guidance.where_to_use}</p>}
           {skill.design_guidance.designer_notes && <p>{skill.design_guidance.designer_notes}</p>}
@@ -66,7 +69,7 @@ export function SkillDetailPage() {
       )}
       {skill.design_guidance?.when_to_avoid && skill.design_guidance.when_to_avoid.length > 0 && (
         <section id="when-to-avoid">
-          <SectionHeading sectionId="when-to-avoid">When to avoid</SectionHeading>
+          <SectionHeading sectionId="when-to-avoid" helpKey="field.design_guidance.when_to_avoid">When to avoid</SectionHeading>
           <ul>
             {skill.design_guidance.when_to_avoid.map((item) => (
               <li key={item}>{item}</li>

@@ -163,7 +163,8 @@ func collectPages(apiRoot string) ([]pageMeta, string, error) {
 		{Path: "/explore/analytics", Title: "Analytics · " + siteName, Description: "Corpus analytics, enrichment coverage, and design statistics.", OgType: "website"},
 		{Path: "/changelog", Title: "Changelog · " + siteName, Description: "Release history for the Game Design Index data and site.", OgType: "website"},
 		{Path: "/contribute", Title: "Contribute · " + siteName, Description: "How to contribute games, mechanics, and design pedagogy to the index.", OgType: "website"},
-		{Path: "/docs/api", Title: "API Docs · " + siteName, Description: "Static JSON API documentation for the Game Design Index.", OgType: "website"},
+        {Path: "/docs/lexicon", Title: "Lexicon · " + siteName, Description: "Field definitions and game design terminology for the index schemas.", OgType: "website"},
+        {Path: "/docs/api", Title: "API Docs · " + siteName, Description: "Static JSON API documentation for the Game Design Index.", OgType: "website"},
 		{Path: "/docs/webmcp", Title: "WebMCP · " + siteName, Description: "In-browser WebMCP tools for AI agents querying the index.", OgType: "website"},
 	}
 	pages = append(pages, staticPages...)

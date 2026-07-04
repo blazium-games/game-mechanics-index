@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { api } from '../api/client'
 import { ExportDropdown } from '../components/ExportDropdown'
 import { SuggestEditLink } from '../components/Layout'
+import { MetaField } from '../components/FieldLabel'
 import { MapDetailSections } from '../components/MapDetailSections'
 import { useHashScroll } from '../hooks/useHashScroll'
 import { buildCanonical, pageTitle } from '../seo/meta'
@@ -52,7 +53,9 @@ export function GameDetailPage() {
         </div>
       </div>
       <p className="meta">
-        {map.subject.genres?.join(' · ')} · {map.metadata?.quality_tier ?? 'template'}
+        {map.subject.genres?.join(' · ')}
+        {' · '}
+        <MetaField entryId="quality-tier" label="tier" value={map.metadata?.quality_tier ?? 'template'} />
       </p>
       <MapDetailSections map={map} />
     </div>

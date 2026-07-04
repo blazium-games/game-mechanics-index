@@ -3,6 +3,27 @@
   "_comment": "Append a new entry before tagging a release. Keep entries newest-first.",
   "entries": [
     {
+      "version": "1.9.0",
+      "date": "2026-07-04",
+      "title": "Field help tooltips and design Lexicon",
+      "highlights": [
+        "Canonical lexicon with GDD, core loop, enrichment, and per-schema field definitions",
+        "Help tooltips on detail pages, index filters, and analytics; browse at /docs/lexicon"
+      ],
+      "sections": [
+        {
+          "heading": "Added",
+          "items": [
+            "data/source/lexicon/lexicon.json exported as /api/v1/lexicon.json",
+            "HelpTooltip and FieldLabel components with SectionHeading helpKey support",
+            "Lexicon page with search and category navigation",
+            "scripts/lint_lexicon and scripts/build_lexicon for lexicon maintenance"
+          ]
+        }
+      ],
+      "release_url": "https://github.com/blazium-games/game-design-index/releases/tag/v1.9.0"
+    },
+    {
       "version": "1.8.1",
       "date": "2026-07-04",
       "title": "Repo hygiene: local-only enrichment workflow",

@@ -215,6 +215,20 @@ func exportAPI(b *internal.Bundle, outDir, releaseVersion string) error {
 		}
 	}
 
+	lexiconPath := filepath.Join(b.Root, "lexicon", "lexicon.json")
+	if lexiconData, err := os.ReadFile(lexiconPath); err == nil {
+		if err := scanBannedJSON(lexiconData, lexiconPath); err != nil {
+			return err
+		}
+		var lexicon any
+		if err := json.Unmarshal(lexiconData, &lexicon); err != nil {
+			return fmt.Errorf("parse lexicon: %w", err)
+		}
+		if err := writeJSON(filepath.Join(api, "lexicon.json"), lexicon); err != nil {
+			return err
+		}
+	}
+
 	var mapRows []MapIndexRow
 	for slug, m := range b.Maps {
 		tier := internal.DetectQualityTier(m)
@@ -520,6 +534,7 @@ func exportAPI(b *internal.Bundle, outDir, releaseVersion string) error {
 			"/api/v1/catalog.json":            map[string]any{"get": map[string]any{"summary": "Corpus catalog metadata"}},
 			"/api/v1/analytics.json":          map[string]any{"get": map[string]any{"summary": "Pre-computed corpus analytics and correlations"}},
 			"/api/v1/changelog.json":          map[string]any{"get": map[string]any{"summary": "Release changelog entries"}},
+			"/api/v1/lexicon.json":            map[string]any{"get": map[string]any{"summary": "Field help and design terminology lexicon"}},
 			"/api/v1/maps/index.json":         map[string]any{"get": map[string]any{"summary": "Lightweight game map index"}},
 			"/api/v1/maps/{slug}.json":        map[string]any{"get": map[string]any{"summary": "Full gameplay map"}},
 			"/api/v1/mechanics/index.json":    map[string]any{"get": map[string]any{"summary": "Mechanic index"}},

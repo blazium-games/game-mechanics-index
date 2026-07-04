@@ -18,6 +18,7 @@ export function ApiDocsPage() {
     '/indexes/cooccurrence-top500.json',
     '/indexes/mechanic-to-maps.json',
     '/tags.json',
+    '/lexicon.json',
     '/openapi.json',
   ]
   return (
@@ -56,6 +57,11 @@ export function ApiDocsPage() {
       </ul>
       <h2>Example</h2>
       <pre>{`fetch('${base}/maps/hollow-knight.json').then(r => r.json())`}</pre>
+      <p>
+        Field definitions and design terms (GDD, core loop, enrichment, binding roles) live in the{' '}
+        <Link to="/docs/lexicon">Lexicon</Link>. Download <code>lexicon.json</code> from{' '}
+        <code>{base}/lexicon.json</code>.
+      </p>
       <p>
         For in-browser AI agents, see <Link to="/docs/webmcp">WebMCP tools</Link> (copy-paste prompts at{' '}
         <Link to="/docs/webmcp#cursor">#cursor</Link>). Use <code>get-mechanic-formatted</code> for Markdown/YAML/text from JSON.

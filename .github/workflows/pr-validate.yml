@@ -24,6 +24,7 @@ jobs:
       - run: go test ./...
       - run: go run ./cmd/export -version 0.1.0
       - run: go run ./scripts/lint_public_copy
+      - run: go run ./scripts/lint_lexicon
       - run: npm ci
         working-directory: site
       - run: npm run build

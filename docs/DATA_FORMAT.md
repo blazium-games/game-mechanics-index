@@ -1,6 +1,6 @@
 # Data format (schema 1.2)
 
-Neutral field guide for contributors to the Game Design Index.
+Neutral field guide for contributors to the Game Design Index. For in-depth definitions of every field and core design terms (GDD, core loop, enrichment, binding roles), see the live **[Lexicon](/docs/lexicon)** and `GET /api/v1/lexicon.json`.
 
 ## Schema versions
 

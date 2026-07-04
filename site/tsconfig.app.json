@@ -16,6 +16,9 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "paths": {
+      "@lexicon/*": ["../data/source/lexicon/*"]
+    },
 
     /* Linting */
     "noUnusedLocals": true,

@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { to: '/explore/analytics', label: 'Analytics' },
   { to: '/changelog', label: 'Changelog' },
   { to: '/contribute', label: 'Contribute' },
+  { to: '/docs/lexicon', label: 'Lexicon' },
   { to: '/docs/api', label: 'API' },
   { to: '/docs/webmcp', label: 'WebMCP' },
 ] as const

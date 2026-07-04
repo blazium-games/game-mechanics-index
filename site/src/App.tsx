@@ -20,6 +20,7 @@ import { UIMenuDetailPage } from './pages/UIMenuDetailPage'
 import { UIMenusPage } from './pages/UIMenusPage'
 import { SkillsPage } from './pages/SkillsPage'
 import { SkillDetailPage } from './pages/SkillDetailPage'
+import { LexiconPage } from './pages/LexiconPage'
 import { WebMcpDocsPage } from './pages/WebMcpDocsPage'
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
@@ -47,6 +48,7 @@ const router = createBrowserRouter(
         { path: 'explore/analytics', element: <AnalyticsPage />, errorElement: <RouteErrorFallback /> },
         { path: 'changelog', element: <ChangelogPage /> },
         { path: 'contribute', element: <ContributePage /> },
+        { path: 'docs/lexicon', element: <LexiconPage /> },
         { path: 'docs/api', element: <ApiDocsPage /> },
         { path: 'docs/webmcp', element: <WebMcpDocsPage /> },
       ],

@@ -373,6 +373,17 @@ section[id] {
   border-radius: 6px;
 }
 
+.filters label.filter-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.filters label.filter-label select {
+  min-width: 9rem;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -798,4 +809,178 @@ code {
 
 .stat a:hover {
   color: #7eb8ff;
+}
+
+.help-wrap {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 0.35rem;
+}
+
+.help-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  padding: 0;
+  border: 1px solid #3d4658;
+  border-radius: 50%;
+  background: #22262f;
+  color: #9aa3b5;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.help-trigger:hover,
+.help-trigger:focus-visible {
+  color: #7eb8ff;
+  border-color: #5a8fd4;
+  outline: none;
+}
+
+.help-trigger.inline-demo {
+  pointer-events: none;
+  vertical-align: text-bottom;
+}
+
+.help-popover {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  min-width: 14rem;
+  max-width: 22rem;
+  padding: 0.65rem 0.75rem;
+  background: #1e2330;
+  border: 1px solid #3d4658;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.help-popover strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #e8e6e3;
+}
+
+.help-popover p {
+  margin: 0 0 0.5rem;
+  color: #c8c6c3;
+}
+
+.field-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.field-label-text {
+  font-weight: inherit;
+}
+
+.meta-field {
+  margin-right: 0.75rem;
+}
+
+.meta-field .field-label {
+  display: inline;
+}
+
+.meta-field .help-wrap {
+  margin-left: 0.2rem;
+}
+
+.table th .field-label {
+  display: inline-flex;
+}
+
+.lexicon-page .lexicon-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.lexicon-page input[type='search'],
+.lexicon-page select {
+  padding: 0.45rem 0.65rem;
+  background: #181b22;
+  border: 1px solid #2a2f3a;
+  border-radius: 4px;
+  color: #e8e6e3;
+}
+
+.lexicon-page input[type='search'] {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.lexicon-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #2a2f3a;
+}
+
+.lexicon-category {
+  margin-bottom: 2rem;
+}
+
+.lexicon-entry {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  background: #181b22;
+  border: 1px solid #2a2f3a;
+  border-radius: 6px;
+}
+
+.lexicon-entry h3 {
+  margin: 0 0 0.35rem;
+}
+
+.lexicon-id {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: #9aa3b5;
+}
+
+.enum-help {
+  margin: 0.75rem 0 0;
+}
+
+.enum-help dt {
+  font-weight: 600;
+  color: #7eb8ff;
+}
+
+.enum-help dd {
+  margin: 0 0 0.5rem;
+}
+
+.lexicon-related {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+}
+
+.empty-field-help {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  color: #9aa3b5;
+}
+
+@media (max-width: 768px) {
+  .help-popover {
+    right: 0;
+    left: auto;
+    max-width: min(22rem, calc(100vw - 2rem));
+  }
 }
