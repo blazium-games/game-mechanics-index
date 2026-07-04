@@ -146,7 +146,7 @@ export async function registerQueryTools(deps: WebMCPDeps, opts: RegisterOpts) {
   await mc.registerTool(
     {
       name: 'get-mechanic-formatted',
-      description: 'Return a mechanic entry as Markdown, YAML, or plain text from formats/v1.',
+      description: 'Return a mechanic entry as Markdown, YAML, or plain text (formatted from JSON).',
       inputSchema: {
         type: 'object',
         properties: {

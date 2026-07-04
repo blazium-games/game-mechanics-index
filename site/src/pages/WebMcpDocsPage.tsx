@@ -14,8 +14,7 @@ Task: Find curated metroidvania-style games, list their signature mechanics, and
 Tools to use: search-index, get-game, compose-design-brief.`
 
 const apiFallback = `curl -s ${LIVE}api/v1/catalog.json
-curl -s ${LIVE}api/v1/mechanics/boss-weakness-network.json
-curl -s ${LIVE}formats/v1/mechanics/boss-weakness-network.md`
+curl -s ${LIVE}api/v1/mechanics/boss-weakness-network.json`
 
 const systemContext = `Game Mechanics Index — 1389 games, 248 mechanics, schema 1.2.
 WebMCP tools on document.modelContext return { content: [{ type: "text", text: "<json>" }] }.

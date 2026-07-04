@@ -18,14 +18,6 @@ export function ApiDocsPage() {
     '/tags.json',
     '/openapi.json',
   ]
-  const formatBase = api.base.replace(/api\/v1\/?$/, 'formats/v1/')
-  const formatEndpoints = [
-    '/catalog.md',
-    '/index.md',
-    '/mechanics/{slug}.md',
-    '/mechanics/{slug}.yaml',
-    '/mechanics/{slug}.txt',
-  ]
   return (
     <div>
       <h1>Static JSON API</h1>
@@ -56,15 +48,18 @@ export function ApiDocsPage() {
         ))}
       </ul>
       <h2>Example</h2>
-      <pre>{`fetch('${base}/maps/hollow-knight.json').then(r => r.json())
-fetch('${formatBase}/mechanics/boss-weakness-network.md').then(r => r.text())`}</pre>
+      <pre>{`fetch('${base}/maps/hollow-knight.json').then(r => r.json())`}</pre>
       <p>
         For in-browser AI agents, see <Link to="/docs/webmcp">WebMCP tools</Link> (copy-paste prompts at{' '}
-        <Link to="/docs/webmcp#cursor">#cursor</Link>).
+        <Link to="/docs/webmcp#cursor">#cursor</Link>). Use <code>get-mechanic-formatted</code> for Markdown/YAML/text from JSON.
       </p>
       <h2>Multi-format export</h2>
       <p>
-        Base URL: <code>{formatBase}</code> — see{' '}
+        Download <code>mechanics-index-formats-&#123;version&#125;.zip</code> from{' '}
+        <a href="https://github.com/blazium-games/game-mechanics-index/releases" target="_blank" rel="noreferrer">
+          GitHub Releases
+        </a>{' '}
+        — see{' '}
         <a
           href="https://github.com/blazium-games/game-mechanics-index/blob/main/docs/FORMATS.md"
           target="_blank"
@@ -73,19 +68,6 @@ fetch('${formatBase}/mechanics/boss-weakness-network.md').then(r => r.text())`}<
           FORMATS.md
         </a>
       </p>
-      <ul>
-        {formatEndpoints.map((e) => (
-          <li key={e}>
-            <a
-              href={`${formatBase}${e.replace('{slug}', 'boss-weakness-network')}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {e}
-            </a>
-          </li>
-        ))}
-      </ul>
     </div>
   )
 }

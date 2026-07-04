@@ -18,6 +18,9 @@ jobs:
           VERSION="${GITHUB_REF_NAME#v}"
           go run ./cmd/export -version "$VERSION"
           cd data/dist/api && zip -r "../../../mechanics-index-api-${VERSION}.zip" v1
+          cd ../formats && zip -r "../../../mechanics-index-formats-${VERSION}.zip" v1
       - uses: softprops/action-gh-release@v2
         with:
-          files: mechanics-index-api-*.zip
+          files: |
+            mechanics-index-api-*.zip
+            mechanics-index-formats-*.zip

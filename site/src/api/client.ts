@@ -1,3 +1,4 @@
+import { formatMechanic } from '../utils/mechanicFormat'
 import type {
   Catalog,
   CooccurrencePair,
@@ -40,10 +41,8 @@ export const api = {
     get<{ mechanics: Record<string, string[]> }>('/indexes/mechanic-to-maps.json'),
   fetchTags: () => get<{ tags: string[] }>('/tags.json'),
   fetchMechanicFormatted: async (slug: string, format: 'md' | 'yaml' | 'txt' = 'md') => {
-    const formatsBase = BASE.replace(/api\/v1\/?$/, 'formats/v1/')
-    const res = await fetch(`${formatsBase}mechanics/${slug}.${format}`)
-    if (!res.ok) throw new Error(`formats ${slug}.${format}: ${res.status}`)
-    return res.text()
+    const entry = await get<MechanicEntry>(`/mechanics/${slug}.json`)
+    return formatMechanic(entry, format)
   },
 }
 

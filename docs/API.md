@@ -7,7 +7,7 @@ The Game Mechanics Index exposes a **read-only static JSON API** served from Git
 | Source | URL |
 |--------|-----|
 | Latest (Pages) | `https://blazium-games.github.io/game-mechanics-index/api/v1/` |
-| Multi-format export | `https://blazium-games.github.io/game-mechanics-index/formats/v1/` |
+| Multi-format export | [GitHub Releases](https://github.com/blazium-games/game-mechanics-index/releases) (`mechanics-index-formats-{version}.zip`) |
 | Pinned release | `https://github.com/blazium-games/game-mechanics-index/releases/download/v{version}/mechanics-index-api-{version}.zip` |
 
 ## JSON endpoints (`/api/v1/`)

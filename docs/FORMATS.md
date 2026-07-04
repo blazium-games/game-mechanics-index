@@ -54,7 +54,7 @@ All formats use the same public sanitizer as JSON:
 go run ./cmd/export -version 0.1.0
 ```
 
-GitHub Pages deploy copies `data/dist/formats/v1` to `site/public/formats/v1`.
+GitHub Pages hosts the JSON API under `/api/v1/`. Full multi-format exports (`formats/v1/`) are attached to [GitHub Releases](https://github.com/blazium-games/game-mechanics-index/releases) as `mechanics-index-formats-{version}.zip`.
 
 ## AI agent recommendation
 

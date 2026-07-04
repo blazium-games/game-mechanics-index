@@ -6,7 +6,7 @@
     { "name": "get-game", "description": "Full gameplay map by slug.", "inputSchema": { "type": "object", "properties": { "slug": { "type": "string" } }, "required": ["slug"] } },
     { "name": "list-mechanics", "description": "List mechanics with optional domain/flavor/tag filters.", "inputSchema": { "type": "object", "properties": { "domain": { "type": "string" }, "flavor": { "type": "string" }, "tag": { "type": "string" } } } },
     { "name": "get-mechanic", "description": "Full mechanic entry by slug.", "inputSchema": { "type": "object", "properties": { "slug": { "type": "string" } }, "required": ["slug"] } },
-    { "name": "get-mechanic-formatted", "description": "Mechanic as md/yaml/txt from formats/v1.", "inputSchema": { "type": "object", "properties": { "slug": { "type": "string" }, "format": { "type": "string", "enum": ["md", "yaml", "txt"] } }, "required": ["slug"] } },
+    { "name": "get-mechanic-formatted", "description": "Mechanic as md/yaml/txt (formatted from JSON).", "inputSchema": { "type": "object", "properties": { "slug": { "type": "string" }, "format": { "type": "string", "enum": ["md", "yaml", "txt"] } }, "required": ["slug"] } },
     { "name": "list-genres", "description": "List genre recipe maps.", "inputSchema": { "type": "object", "properties": {} } },
     { "name": "get-genre", "description": "Genre recipe map by slug.", "inputSchema": { "type": "object", "properties": { "slug": { "type": "string" } }, "required": ["slug"] } },
     { "name": "get-mechanic-maps", "description": "Maps featuring a mechanic.", "inputSchema": { "type": "object", "properties": { "mechanic_slug": { "type": "string" } }, "required": ["mechanic_slug"] } },
