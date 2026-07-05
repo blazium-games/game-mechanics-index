@@ -10,10 +10,10 @@ Browse **1,389 gameplay maps**, **248 reusable mechanics**, and **16 genre recip
 
 | | |
 |---|---|
-| **Live site** | https://blazium-games.github.io/game-design-index/ |
-| **GitHub** | https://github.com/blazium-games/game-design-index |
-| **Discord** | https://discord.gg/sZaf9KYzDp |
-| **X** | https://x.com/BlaziumGames |
+| **Live site** | [game-design-index](https://blazium-games.github.io/game-design-index) |
+| **GitHub** | [blazium-games/game-design-index](https://github.com/blazium-games/game-design-index) |
+| **Discord** | [Server Invite](https://discord.gg/sZaf9KYzDp) |
+| **X** | [BlaziumGames](https://x.com/BlaziumGames) |
 | **API** | [docs/API.md](docs/API.md) |
 | **WebMCP** | [docs/WEBMCP.md](docs/WEBMCP.md) |
 | **Contribute** | [CONTRIBUTING.md](CONTRIBUTING.md) |
